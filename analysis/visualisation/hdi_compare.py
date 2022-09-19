@@ -139,15 +139,8 @@ if __name__ == "__main__":
     except IndexError:
         n_perm = 50
 
-    if model_name == 'motorcircle':
-        param_ls = ['loss_sens', 'perturb']
-    elif model_name == 'motoradapt':
-        param_ls = ['mu_A', 'mu_B','mu_sig']
-    elif model_name == 'bandit3arm_combined':
-        param_ls = ['mu_Arew', 'mu_Apun','mu_R','mu_P','mu_xi','mu_d']
-    elif model_name == 'generalise':
-        param_ls = ['mu_sigma_a', 'mu_sigma_n','mu_eta','mu_kappa','mu_beta','mu_bias']
-
-
+    
+    param_ls = ['mu_Arew', 'mu_Apun','mu_R','mu_P','mu_xi','mu_d']
+    
     comp_hdi_mean(model_name, param_ls, sort=False, draw_idx=draw_idx, draws=n_perm, seed=0,num_trial=trial_num, num_sj=subj_num)
     plot_violin_params(f'./figs/{model_name}/params'+'_'+str(trial_num)+'_'+str(subj_num)+'.csv', model_name, n_perm=n_perm,num_trial=trial_num, num_sj=subj_num)

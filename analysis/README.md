@@ -72,11 +72,11 @@ It's also possible to collect your own data and use that for analysis using this
 
 * Fork the study repository on [Pavlovia](https://pavlovia.org) to your account
 * Run the online study with your subject pool (requires Pavlovia license, see their website for details)
-* Clone the forked repository locally in the same directory as `apdp_tools` 
-* Run code in `data_transform` to convert Pavlovia data into model-compatible structure. For example, for the generalisation task, the stan compatible txt file can be found in `transformed_data`
+* Clone the forked repository locally in the same directory as this repo 
+* Run code in `data_transform` to convert Pavlovia data into model-compatible structure. For this task, the stan compatible txt file can be found in `transformed_data`
 
 ```eval
-python data_transform/convert_data.py generalise ../generalisation_py 190
+python data_transform/convert_data.py bandit3arm ../../task 100
 ```
 
 The task name argument is `bandit3arm` for this task, which is specified in argument 1 above. The 2nd argument is the relative path of your Pavlovia task directory (forked from our source, cloned to your local machine). Alternatively, you can write your own data conversion function to match any changes you've made to the task. Finally, the last optional argument specifies how many trials to expect in the dataset for each participant to reject files which are not complete, if not specified, incomplete files will be included.
